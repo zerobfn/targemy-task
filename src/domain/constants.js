@@ -3,6 +3,9 @@ import Cookies from 'js-cookie'
 const AUTH_HEADER_PREFIX = 'Token'
 const COOKIE_KEY_AUTH_HEADER = 'token'
 
+export const baseUrl = `https://api.stage.targemy.com`
+export const apiUrl = `${baseUrl}/v1`
+
 export const isLoggedIn = () => {
     const authHeader = Cookies.get(COOKIE_KEY_AUTH_HEADER)
     if (authHeader === undefined) return false

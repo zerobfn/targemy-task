@@ -53,8 +53,15 @@ export default {
 
 <style lang="scss" scoped>
 .Sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: flex-end;
+    max-width: 460px;
     padding: 20px;
     &_section {
+        width: 100%;
+        max-width: 300px;
         margin-bottom: 20px;
         &-item {
             display: flex;
