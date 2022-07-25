@@ -1,6 +1,6 @@
 <template>
     <div class="Sidebar">
-        <div class="Sidebar_section">
+        <div class="Sidebar_section user" v-if="false">
         </div>
         <div class="Sidebar_section">
             <div class="Sidebar_section-item">
@@ -74,6 +74,11 @@ export default {
             transition: background-color 0.3s ease;
             &--text {
                 margin-left: 20px;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 22px;
+                color: #000000;
             }
             &:hover {
                 cursor: pointer;
