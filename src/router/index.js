@@ -12,7 +12,7 @@ const routes = [
         component: MainContainer,
         children: [
             {
-                path: ':id?',
+                path: '',
                 name: 'mainpage',
                 component: MainPage
             }
@@ -28,7 +28,7 @@ const routes = [
 
 const router = new VueRouter({
     mode: 'history',
-    base: '/targemy-task/',
+    base: process.env.BASE_URL,
     routes
 })
 

@@ -2,8 +2,8 @@
     <div class="MainPage">
         <div class="MainPage_wrapper">
             <side-bar />
-            <post-page :postId="postId"/>
-            <comments-view :postId="postId"/>
+            <post-page :postId="postId" :key="`post-${postId}`"/>
+            <comments-view :postId="postId" :key="`comments-${postId}`"/>
         </div>
         <related-posts v-if="false"/>
     </div>
@@ -25,12 +25,7 @@ export default {
     },
     computed: {
         postId() {
-            if (this.$route.params.id) {
-                if (!isNaN(this.$route.params.id)) {
-                    return Number(this.$route.params.id)
-                }
-            }
-            return 3
+            return this.$store.getters.getPostId
         }
     }
 }

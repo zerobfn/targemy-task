@@ -4,15 +4,17 @@
             <div class="logo">
                 <img :src="require('@/assets/logo.svg')"/>
             </div>
+            <div class="search">
+                <img class="search_icon" :src="require('@/assets/search_icon.svg')"/>
+                <input
+                    type="text"
+                    class="search_text"
+                    placeholder="Найти посты"
+                    @keyup.enter="updatePostId()"
+                    v-model="postId"/>
+            </div>
             <div class="signedin" v-if="isSignedIn">
-                <div class="search">
-                    <img class="search_icon" :src="require('@/assets/search_icon.svg')"/>
-                    <input
-                        type="text"
-                        class="search_text"
-                        placeholder="Найти посты"
-                        v-model="searchText"/>
-                </div>
+
             </div>
             <div class="auth" v-else>
                 <div class="auth_button">Регистрация</div>
@@ -27,12 +29,17 @@ export default {
     name: 'HeaderComponent',
     data: () => {
         return {
-            searchText: ''
+            postId: ''
         }
     },
     computed: {
         isSignedIn() {
             return this.$store.getters.isSignedIn
+        }
+    },
+    methods: {
+        updatePostId() {
+            this.$store.commit('setPostId', Number(this.postId))
         }
     }
 }
@@ -58,31 +65,32 @@ $break-large: 1200px;
         .logo:hover {
             cursor: pointer;
         }
+        .search {
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            width: 260px;
+            height: 40px;
+            padding: 0 16px;
+            background: #F4F4F4;
+            border-radius: 20px;
+            &_text {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 20px;
+                margin: 0 0 0 8px;
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                color: rgba(0,0,0,.87);
+                outline: none;
+            }
+        }
         .signedin {
             display: flex;
             flex-grow: 1;
-            .search {
-                display: flex;
-                margin: 0 auto;
-                align-items: center;
-                width: 260px;
-                height: 40px;
-                padding: 0 16px;
-                background: #F4F4F4;
-                border-radius: 20px;
-                &_text {
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 15px;
-                    line-height: 20px;
-                    margin: 0 0 0 8px;
-                    background-color: transparent;
-                    border: none;
-                    padding: 0;
-                    color: rgba(0,0,0,.87);
-                    outline: none;
-                }
-            }
+
         }
         .auth {
             display: flex;

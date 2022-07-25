@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        isSignedIn: isLoggedIn()
+        isSignedIn: isLoggedIn(),
+        postId: 3
     },
     actions: {
         logOut({ commit }) {
@@ -17,11 +18,19 @@ export default new Vuex.Store({
     mutations: {
         setIsSignedIn(state, val) {
             state.isSignedIn = val
+        },
+        setPostId(state, id) {
+            if (/^-?\d+$/.test(id)) {
+                state.postId = id
+            }
         }
     },
     getters: {
         getIsSignedIn(state) {
             return state.isSignedIn
+        },
+        getPostId(state) {
+            return state.postId
         }
     },
     modules: {
