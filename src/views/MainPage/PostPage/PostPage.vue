@@ -231,7 +231,7 @@ export default {
             margin: 20px 0;
             padding: 0 20px;
         }
-        .post_content::v-deep img {
+        .post_content::v-deep(img) {
             width: 100%;
         }
         &_footer {
