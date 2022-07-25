@@ -77,7 +77,7 @@ export default {
                     this.nextUrl = json._links.next ? json._links.next.href : null
                 },
                 onError: error => {
-                    console.error(error)
+                    console.log(error)
                     const result = comments.find(x => x.url === this.nextUrl)
                     if (result) {
                         result.data.items.forEach(x => {

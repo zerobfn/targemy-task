@@ -41,7 +41,7 @@ export default class User {
                 this.setUser(json)
             },
             onError: error => {
-                console.error(error)
+                console.log(error)
                 const user = users.find(x => x.id === this.id)
                 if (user) {
                     this.setUser(user)
@@ -72,7 +72,7 @@ export default class User {
                 this.setInfo(json.data)
             },
             onError: error => {
-                console.error(error)
+                console.log(error)
                 const user = userInfo.find(x => x.user_id === this.id)
                 if (user) {
                     this.setInfo(user.data)

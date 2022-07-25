@@ -108,7 +108,7 @@ export default {
                     this.post = new Post(json)
                 },
                 onError: error => {
-                    console.error(error)
+                    console.log(error)
                     this.post = new Post(post3)
                 },
                 doFinally: () => {
