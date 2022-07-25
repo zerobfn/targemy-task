@@ -5,7 +5,7 @@
             <post-page :postId="postId" :key="`post-${postId}`"/>
             <comments-view :postId="postId" :key="`comments-${postId}`"/>
         </div>
-        <related-posts v-if="false"/>
+        <related-posts />
     </div>
 </template>
 
