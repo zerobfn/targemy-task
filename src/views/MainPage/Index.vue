@@ -5,7 +5,7 @@
             <post-page :postId="postId"/>
             <comments-view :postId="postId"/>
         </div>
-        <related-posts />
+        <related-posts v-if="false"/>
     </div>
 </template>
 

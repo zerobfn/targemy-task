@@ -12,7 +12,7 @@ const routes = [
         component: MainContainer,
         children: [
             {
-                path: '',
+                path: ':id?',
                 name: 'mainpage',
                 component: MainPage
             }
