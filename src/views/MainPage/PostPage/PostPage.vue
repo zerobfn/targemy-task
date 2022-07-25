@@ -3,15 +3,17 @@
         <div class="post" v-if="post">
             <img class="post_image" :src="post.photo_cover"/>
             <div class="post_author" v-if="author">
-                <div class="post_author-image-container">
-                    <img class="post_author-image" :src="author.photo_avatar"/>
-                </div>
-                <div class="post_author-info">
-                    <div class="post_author-info--fullname">
-                        {{ author.fullName }}
+                <div class="post_author_wrapper">
+                    <div class="post_author-image-container">
+                        <img class="post_author-image" :src="author.photo_avatar"/>
                     </div>
-                    <div class="post_author-info--subscribers">
-                        {{`${author.subscribers} подписчиков`}}
+                    <div class="post_author-info">
+                        <div class="post_author-info--fullname">
+                            {{ author.fullName }}
+                        </div>
+                        <div class="post_author-info--subscribers">
+                            {{`${author.subscribers} подписчиков`}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,6 +33,48 @@
             </div>
             <div class="post_content" v-html="post.content">
             </div>
+            <div class="post_footer">
+                <div class="post_footer-item">
+                    <img class="post_footer-item--icon" />
+                    <div class="post_footer-item--text">
+                        {{ post.likes }}
+                    </div>
+                </div>
+                <div class="post_footer-item">
+                    <img class="post_footer-item--icon" />
+                    <div class="post_footer-item--text">
+                        {{ post.likes }}
+                    </div>
+                </div>
+                <div class="post_footer-item">
+                    <img class="post_footer-item--icon" />
+                    <div class="post_footer-item--text">
+                        {{ post.likes }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post_author" v-if="author">
+            <div class="post_author_wrapper">
+                <div class="post_author-image-container">
+                    <img class="post_author-image" :src="author.photo_avatar"/>
+                </div>
+                <div class="post_author-info">
+                    <div class="post_author-info--fullname">
+                        {{ author.fullName }}
+                    </div>
+                    <div class="post_author-info--subscribers">
+                        <span class="author_subscribe">
+                            Подписаться
+                            <img :src="require('@/assets/plus_icon.svg')"/>
+                        </span>
+                        {{`${author.subscribers} подписчиков`}}
+                    </div>
+                </div>
+            </div>
+            <p class="post_author-about">
+                {{ author.about }}
+            </p>
         </div>
     </div>
 </template>
@@ -61,7 +105,6 @@ export default {
                 url: `${apiUrl}/post/${this.postId}`,
                 isSecureRequest: false,
                 onSuccess: json => {
-                    console.log(json)
                     this.post = new Post(json)
                 },
                 onError: error => {
@@ -69,13 +112,9 @@ export default {
                     this.post = new Post(post3)
                 },
                 doFinally: () => {
-                    console.log(this.post)
                     this.author = new User(this.post.user_id, true)
                 }
             })
-        },
-        getAuthor() {
-            // TODO
         }
     },
     mounted() {
@@ -98,46 +137,72 @@ export default {
         }
         &_author {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
             margin-top: 2px;
             padding: 0 20px;
             height: 82px;
-            &-image-container {
-                width: 62px;
-                height: 62px;
-                padding: 3px;
-                background: linear-gradient(#fff, #fff) padding-box,
-                            linear-gradient(to bottom, #F5F4FF, #D2E7FF) border-box;
-                border: 3px solid transparent;
-                border-radius: 50%;
-                .post_author-image {
-                    width: 50px;
-                    height: 50px;
+            &_wrapper {
+                display: flex;
+                align-items: center;
+                .post_author-image-container {
+                    width: 62px;
+                    height: 62px;
+                    padding: 3px;
+                    background: linear-gradient(#fff, #fff) padding-box,
+                                linear-gradient(to bottom, #F5F4FF, #D2E7FF) border-box;
+                    border: 3px solid transparent;
                     border-radius: 50%;
-                }
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            &-info {
-                margin-left: 10px;
-                font-style: normal;
-                font-weight: 600;
-                &--fullname {
-                    font-size: 16px;
-                    line-height: 22px;
-                    color: #242424;
+                    .post_author-image {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
                     &:hover {
                         cursor: pointer;
                     }
                 }
-                &--subscribers {
-                    margin-top: 7px;
-                    font-size: 14px;
-                    line-height: 19px;
-                    color: #5333BE;
+                .post_author-info {
+                    margin-left: 10px;
+                    font-style: normal;
+                    font-weight: 600;
+                    &--fullname {
+                        font-size: 16px;
+                        line-height: 22px;
+                        color: #242424;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                    &--subscribers {
+                        .author_subscribe {
+                            img {
+                                margin: 0 10px 0 5px;
+                            }
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        margin-top: 7px;
+                        font-size: 14px;
+                        line-height: 19px;
+                        color: #5333BE;
+                    }
                 }
             }
+            &-about {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 19px;
+                color: #242424;
+            }
+        }
+        &_author:last-child {
+            margin-top: 20px;
+            padding: 20px;
+            background: #FFFFFF;
+            border-radius: 25px;
+            height: auto;
         }
         &_date {
             display: flex;
@@ -168,6 +233,64 @@ export default {
         }
         .post_content::v-deep img {
             width: 100%;
+        }
+        &_footer {
+            display: flex;
+            &-item {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                height: 60px;
+                justify-content: center;
+                align-items: center;
+                background: #5333BE;
+                &--text {
+                    margin-top: 2px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 19px;
+                    color: #FFFFFF;
+                }
+                &:hover {
+                    cursor: pointer;
+                    background: #EEF8FF;
+                    .post_footer-item--text {
+                        color: #5333BE;
+                    }
+                }
+            }
+            &-item:nth-child(1) {
+                border-bottom-left-radius: 25px;
+                .post_footer-item--icon {
+                    content: url('@/assets/like_icon.svg');
+                }
+                &:hover {
+                    .post_footer-item--icon {
+                        content: url('@/assets/like_icon-hover.svg');
+                    }
+                }
+            }
+            &-item:nth-child(2) {
+                .post_footer-item--icon {
+                    content: url('@/assets/comment_icon.svg');
+                }
+                &:hover {
+                    .post_footer-item--icon {
+                        content: url('@/assets/comment_icon-hover.svg');
+                    }
+                }
+            }
+            &-item:nth-child(3) {
+                border-bottom-right-radius: 25px;
+                .post_footer-item--icon {
+                    content: url('@/assets/share_icon.svg');
+                }
+                &:hover {
+                    .post_footer-item--icon {
+                        content: url('@/assets/share_icon-hover.svg');
+                    }
+                }
+            }
         }
     }
 }

@@ -63,7 +63,6 @@ export default class User {
         this.photo_cover = photo_cover
         this.photo_avatar = photo_avatar
         this.profileLink = profileLink
-        console.log(this.photo_avatar)
     }
     getInfo() {
         httpGet({
@@ -78,9 +77,6 @@ export default class User {
                 if (user) {
                     this.setInfo(user.data)
                 }
-            },
-            doFinally: () => {
-                // TODO
             }
         })
     }

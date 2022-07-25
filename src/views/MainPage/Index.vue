@@ -1,18 +1,22 @@
 <template>
     <div class="MainPage">
         <side-bar />
-        <post-page />
+        <post-page :postId="postId"/>
+        <comments-view :postId="postId"/>
     </div>
 </template>
 
 <script>
 import SideBar from './Sidebar.vue'
 import PostPage from './PostPage/PostPage.vue'
+import CommentsView from './PostPage/Comments.vue'
+
 export default {
     name: 'MainPage',
     components: {
         SideBar,
-        PostPage
+        PostPage,
+        CommentsView
     },
     computed: {
         postId() {

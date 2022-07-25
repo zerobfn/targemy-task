@@ -59,6 +59,7 @@ export default {
     align-items: flex-end;
     max-width: 460px;
     padding: 20px;
+    background: #FFFFFF;
     &_section {
         width: 100%;
         max-width: 300px;
@@ -68,6 +69,7 @@ export default {
             align-items: center;
             max-width: 300px;
             height: 62px;
+            padding: 0 10px;
             border-bottom: 1px solid #F6F6F6;
             transition: background-color 0.3s ease;
             &--text {

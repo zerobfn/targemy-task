@@ -67,3 +67,87 @@ export const userInfo = [
         }
     }
 ]
+
+export const comments = [
+    {
+        url: 'https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=1&per-page=2',
+        data: {
+            "items": [
+                {
+                    "id": 86,
+                    "user_id": 2,
+                    "type": "post",
+                    "post_id": 3,
+                    "card_id": null,
+                    "date_create": "2022-07-15 01:32:12",
+                    "content": "Так, я добавлю ещё несколько комментариев чтобы попасть в тренды. Это ведь так работает да? Ведь да?"
+                },
+                {
+                    "id": 85,
+                    "user_id": 2,
+                    "type": "post",
+                    "post_id": 3,
+                    "card_id": null,
+                    "date_create": "2022-07-15 00:51:12",
+                    "content": "Где моя тысяча лайков? 🐕‍🦺🐕‍🦺"
+                }
+            ],
+            "_links": {
+                "self": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=1&per-page=2"
+                },
+                "first": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=1&per-page=2"
+                },
+                "last": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=2&per-page=2"
+                },
+                "next": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=2&per-page=2"
+                }
+            },
+            "_meta": {
+                "totalCount": 3,
+                "pageCount": 2,
+                "currentPage": 1,
+                "perPage": 2
+            }
+        }
+    },
+    {
+        url: 'https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=2&per-page=2',
+        data: {
+            "items": [
+                {
+                    "id": 5,
+                    "user_id": 8,
+                    "type": "post",
+                    "post_id": 3,
+                    "card_id": null,
+                    "date_create": "2021-05-24 20:18:41",
+                    "content": "Коммент к посту"
+                }
+            ],
+            "_links": {
+                "self": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=2&per-page=2"
+                },
+                "first": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=1&per-page=2"
+                },
+                "last": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=2&per-page=2"
+                },
+                "prev": {
+                    "href": "https://api.stage.targemy.com/v1/comments?filter%5Bpost_id%5D=3&sort=-id&page=1&per-page=2"
+                }
+            },
+            "_meta": {
+                "totalCount": 3,
+                "pageCount": 2,
+                "currentPage": 2,
+                "perPage": 2
+            }
+        }
+    }
+]

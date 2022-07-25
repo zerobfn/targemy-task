@@ -9,8 +9,8 @@
 
 <style lang="scss">
 #app {
-    width: 100vw;
-    height: 100vh;
+    display: flex;
+    flex-grow: 1;
     .main {
         width: 100%;
         height: 100%;

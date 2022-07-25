@@ -1,4 +1,5 @@
 import { calculteTimeBefore } from '@/utils/timeBefore'
+
 export default class Post {
     constructor({
         id,
