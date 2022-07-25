@@ -44,7 +44,6 @@
 import { httpGet } from '@/utils/http'
 import { apiUrl } from '@/domain/constants'
 import Comment from '@/models/Comment'
-import { comments } from '@/data/testData'
 
 export default {
     name: 'CommentsView',
@@ -77,15 +76,7 @@ export default {
                     this.nextUrl = json._links.next ? json._links.next.href : null
                 },
                 onError: error => {
-                    console.log(error)
-                    const result = comments.find(x => x.url === this.nextUrl)
-                    if (result) {
-                        result.data.items.forEach(x => {
-                            this.comments.push(new Comment(x))
-                        })
-                        this.totalCount = result.data._meta.totalCount
-                        this.nextUrl = result.data._links.next ? result.data._links.next.href : null
-                    }
+                    console.error(error)
                 }
             })
             

@@ -1,6 +1,5 @@
 import { httpGet } from "@/utils/http"
 import { apiUrl } from "@/domain/constants"
-import { users, userInfo } from "@/data/testData"
 
 export default class User {
     constructor(id, info = false) {
@@ -42,10 +41,6 @@ export default class User {
             },
             onError: error => {
                 console.log(error)
-                const user = users.find(x => x.id === this.id)
-                if (user) {
-                    this.setUser(user)
-                }
             }
         })
     }
@@ -73,10 +68,6 @@ export default class User {
             },
             onError: error => {
                 console.log(error)
-                const user = userInfo.find(x => x.user_id === this.id)
-                if (user) {
-                    this.setInfo(user.data)
-                }
             }
         })
     }

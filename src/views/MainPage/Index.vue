@@ -25,6 +25,11 @@ export default {
     },
     computed: {
         postId() {
+            if (this.$route.params.id) {
+                if (!isNaN(this.$route.params.id)) {
+                    return Number(this.$route.params.id)
+                }
+            }
             return 3
         }
     }

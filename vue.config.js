@@ -4,6 +4,5 @@ module.exports = {
         workboxOptions: {
             skipWaiting: true
         }
-    },
-    transpileDependencies: true
+    }
 }

@@ -8,11 +8,6 @@ export const httpGet = ({
     isSecureRequest = false
 }) => {
     const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': null,
-        'X-Requested-With': null
     }
     if (isSecureRequest) headers.Authorization = getAuthToken()
     fetch(url, {

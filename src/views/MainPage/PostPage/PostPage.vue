@@ -84,7 +84,6 @@ import { httpGet } from '@/utils/http'
 import { apiUrl } from '@/domain/constants'
 import Post from '@/models/Post'
 import User from '@/models/User'
-import { post3 } from '@/data/testData'
 
 export default {
     props: {
@@ -109,7 +108,6 @@ export default {
                 },
                 onError: error => {
                     console.log(error)
-                    this.post = new Post(post3)
                 },
                 doFinally: () => {
                     this.author = new User(this.post.user_id, true)
