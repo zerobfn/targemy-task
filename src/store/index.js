@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         isSignedIn: isLoggedIn(),
-        postId: 3
+        postId: 3,
+        isSignInModelVisible: false
     },
     actions: {
         logOut({ commit }) {
@@ -23,6 +24,13 @@ export default new Vuex.Store({
             if (/^-?\d+$/.test(id)) {
                 state.postId = id
             }
+        },
+        setSignInModelVisible(state, val) {
+            if (val && state.isSignedIn === false) {
+                state.isSignInModelVisible = true
+            } else {
+                state.isSignInModelVisible = false
+            }
         }
     },
     getters: {
@@ -31,6 +39,9 @@ export default new Vuex.Store({
         },
         getPostId(state) {
             return state.postId
+        },
+        getIsSignInModelVisible(state) {
+            return state.isSignInModelVisible
         }
     },
     modules: {

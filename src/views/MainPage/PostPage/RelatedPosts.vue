@@ -41,6 +41,8 @@ export default {
         line-height: 27px;
     }
     .posts {
+        width: 100vw;
+        max-width: 1440px;
         display: flex;
         justify-content: center;
         margin-top: 20px;

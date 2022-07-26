@@ -3,10 +3,26 @@
         <div class="main">
             <router-view />
         </div>
-        <div class="login"></div>
+        <div class="login" v-if="isSignInVisible && false">
+            <sign-in />
+        </div>
     </div>
 </template>
+<script>
+import SignIn from '@/views/auth/SignIn.vue'
 
+export default {
+    name: 'App',
+    components: {
+        SignIn
+    },
+    computed: {
+        isSignInVisible() {
+            return this.$store.getters.getIsSignInModelVisible
+        }
+    }
+}
+</script>
 <style lang="scss">
 #app {
     display: flex;

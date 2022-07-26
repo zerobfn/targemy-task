@@ -18,7 +18,7 @@
             </div>
             <div class="auth" v-else>
                 <div class="auth_button">Регистрация</div>
-                <div class="auth_button">Вход</div>
+                <div class="auth_button" @click="signIn()">Вход</div>
             </div>
         </div>
     </div>
@@ -40,6 +40,9 @@ export default {
     methods: {
         updatePostId() {
             this.$store.commit('setPostId', Number(this.postId))
+        },
+        signIn() {
+            this.$store.commit('setSignInModelVisible', true)
         }
     }
 }
