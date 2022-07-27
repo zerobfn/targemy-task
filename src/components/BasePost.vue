@@ -93,7 +93,7 @@ export default {
 .BasePost {
     display: flex;
     flex-direction: column;
-    margin: 0 20px;
+    margin: 0 10px;
     padding: 15px;
     width: 340px;
     height: 506px;
