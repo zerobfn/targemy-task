@@ -128,6 +128,7 @@ export default {
     max-width: 500px;
     background: #f9f9f9;
     .post {
+        border-radius: 25px;
         background: #FFFFFF;
         &_image {
             width: 100%;
@@ -230,7 +231,8 @@ export default {
             padding: 0 20px;
         }
         .post_content::v-deep(img) {
-            width: 100%;
+            width: calc(100% + 40px);
+            margin-left: -20px;
         }
         &_footer {
             display: flex;
@@ -239,6 +241,7 @@ export default {
                 flex-direction: column;
                 flex-grow: 1;
                 height: 60px;
+                padding: 0 20px;
                 justify-content: center;
                 align-items: center;
                 background: #5333BE;

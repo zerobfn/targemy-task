@@ -72,6 +72,7 @@ export default {
             padding: 0 10px;
             border-bottom: 1px solid #F6F6F6;
             transition: background-color 0.3s ease;
+            background: #FAFDFF;
             &--text {
                 margin-left: 20px;
                 font-style: normal;
