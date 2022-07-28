@@ -43,7 +43,7 @@
                 <div class="post_footer-item">
                     <img class="post_footer-item--icon" />
                     <div class="post_footer-item--text">
-                        {{ post.likes }}
+                        {{ commentsCount }}
                     </div>
                 </div>
                 <div class="post_footer-item">
@@ -96,6 +96,7 @@ export default {
         return {
             post: null,
             author: null,
+            commentsCount: 0
         }
     },
     methods: {
@@ -113,10 +114,23 @@ export default {
                     this.author = new User(this.post.user_id, true)
                 }
             })
+        },
+        getCommentsCount() {
+            httpGet({
+                url: `${apiUrl}/comments?filter%5Bpost_id%5D=${this.postId}&page=1&per-page=1`,
+                isSecureRequest: false,
+                onSuccess: json => {
+                    this.commentsCount = json._meta.totalCount
+                },
+                onError: error => {
+                    console.error(error)
+                }
+            })
         }
     },
     mounted() {
         this.getPost()
+        this.getCommentsCount()
     }
 }
 </script>
