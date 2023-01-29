@@ -1,11 +1,12 @@
 <template>
     <div class="MainPage">
-        <div class="MainPage_wrapper">
+        <div class="MainPage_wrapper" v-show="false">
             <side-bar />
             <post-page :postId="postId" :key="`post-${postId}`"/>
             <comments-view :postId="postId" :key="`comments-${postId}`"/>
         </div>
-        <related-posts />
+        <related-posts  v-show="false"/>
+        <test-page />
     </div>
 </template>
 
@@ -14,6 +15,7 @@ import SideBar from './Sidebar.vue'
 import PostPage from './PostPage/PostPage.vue'
 import CommentsView from './PostPage/Comments.vue'
 import RelatedPosts from './PostPage/RelatedPosts.vue'
+import TestPage from './TestPage.vue'
 
 export default {
     name: 'MainPage',
@@ -21,7 +23,8 @@ export default {
         SideBar,
         PostPage,
         CommentsView,
-        RelatedPosts
+        RelatedPosts,
+        TestPage
     },
     computed: {
         postId() {
